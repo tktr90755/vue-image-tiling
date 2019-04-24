@@ -1,6 +1,6 @@
 <template>
   <div id="demoBasic">
-    <ul v-image-tiling="{ width:2600, height:1600, scale:40, move:true }">
+    <ul v-image-tiling="{ width:800, height:600, scale:40, move:true }">
       <li><a href=""><img src="https://3.bp.blogspot.com/-mq0hdaR-ZcY/XG4GXM_RphI/AAAAAAABRqw/8tlGYKiJOXQTZnkr1UWBoGmPtDIBivEzgCLcBGAs/s800/ahiruguchi_woman.png"></a></li>
       <li><a href=""><img src="https://4.bp.blogspot.com/-Hbl_buIRu5o/XG4GXOwvXLI/AAAAAAABRq0/hEWfV0FE5IEG66wOidqBlI5IA0e28QFGgCLcBGAs/s800/ahiruguchi_man.png"></a></li>
       <li><a href=""><img src="https://3.bp.blogspot.com/-lQV3y6ENfrQ/XAnwFqYcITI/AAAAAAABQuA/Jwa8HXMUuQYFY1GP_jd7_vbGAdBM5UV2gCLcBGAs/s800/question_head_gakuzen_girl.png"></a></li>
@@ -9,17 +9,6 @@
       <li><a href=""><img src="https://2.bp.blogspot.com/-1VrUWeLF8gc/W959ugjsTHI/AAAAAAABP4I/vTVKrRMiAtwYHm_V3zZyJ0qgwmCPIkDFwCLcBGAs/s800/pose_koshi_nukeru_kowai_man.png"></a></li>
       <li><a href=""><img src="https://4.bp.blogspot.com/-q4yJAlH2rbI/W-0gXpjIhTI/AAAAAAABQJE/7NIoUm8rK5I7mvNdkgT4Wy2wtEvjmpTnACLcBGAs/s800/angry_fukureru_girl.png"></a></li>
       <li><a href=""><img src="https://2.bp.blogspot.com/-6iIUl-9hmVY/W-0gXQBaPjI/AAAAAAABQJA/OQPFQ8RJJTgNfWqcKPLb65nljFs-iMxBQCLcBGAs/s800/angry_fukureru_boy.png"></a></li>
-      <!-- <li><a href=""><img src="./assets/img/00.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/01.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/02.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/03.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/04.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/05.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/06.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/07.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/08.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/09.jpg"></a></li>
-      <li><a href=""><img src="./assets/img/11.jpg"></a></li> -->
     </ul>
   </div>
 </template>
@@ -39,7 +28,7 @@ a:hover{
   opacity: 0.75;
 }
 img{
-  border: 6px solid #fff;
+  border: 1px solid #000;
   -webkit-animation: fadein 0.5s linear 0s 1;
 }
 @-webkit-keyframes fadein {

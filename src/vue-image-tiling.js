@@ -1,17 +1,19 @@
-import utils from "./assets/js/utils";
+import Ticker from "./assets/js/Ticker";
 import Tiles from "./assets/js/Tiles";
 
 export default class ImageTiling {
   constructor() {}
 }
-
 ImageTiling.install = function (Vue) {
   Vue.directive('image-tiling', {
 
     inserted (el, binding, vnode) {
+      let render0Id = 'render0_' + new Date().getTime().toString(16) + Math.floor(99999 * Math.random()).toString(16);
+      let render1Id = 'render1_' + new Date().getTime().toString(16) + Math.floor(99999 * Math.random()).toString(16);
+      
       let tiles = undefined;
-      let renderId;
       let elms = [];
+
       if (typeof binding.value === 'object') {
         const { width, height, scale, move } = binding.value;
         tiles = (tiles === undefined)?new Tiles(width, scale):tiles;
@@ -70,51 +72,49 @@ ImageTiling.install = function (Vue) {
           container.appendChild(elm);
         }
 
-        function render(){
+        function render0(){
           let next = tiles.next(true);
           setStyle(elms[Math.floor(Math.random() * elms.length)].cloneNode(true), next, container0);
-          renderId = window.requestAnimationFrame(render);
           let height = Number(el.style.height.replace( /px/g , "" ))
           if(tiles.currentY >= height){
-            window.cancelAnimationFrame(renderId);
-            render2();
+            Ticker.kill(render0Id);
+            Ticker.add(render1, render1Id);
           }
         };
 
         let maxY = NaN;
-        function render2(){
+        function render1(){
           let next = tiles.next(false);
           if(isNaN(maxY)===true){
             maxY = next.maxY;
           }
           if(maxY > next.y){
             setStyle(elms[Math.floor(Math.random() * elms.length)].cloneNode(true), next, container0);
-            renderId = window.requestAnimationFrame(render2);
           }else{
-            window.cancelAnimationFrame(renderId);
             container0.style.height = (maxY + scale) + 'px';
             container1 = container0.cloneNode(true);
             el.appendChild(container1);
-            if(move)render3();
+
+            Ticker.killAll();
+            if(move)render2();
           }
         }
 
         let targetY = 0;
-        function render3(){
+        function render2(){
           targetY--;
           container0.style.transform = "translateY(" + targetY + "px)";
           container1.style.transform = "translateY(" + targetY + "px)";
           if(targetY<=-(maxY)){
             targetY = 0;
           }
-          renderId = window.requestAnimationFrame(render3);
         }
-        render();
+        Ticker.add(render0, render0Id);
       }
     },
 
     unbind (el, binding, vnode) {
-      window.cancelAnimationFrame(renderId);
+      Ticker.killAll();
     }
   });
 };
