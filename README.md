@@ -1,7 +1,8 @@
 # vue-image-tiling 
 設定したulの中に含まれているimgを取得してタイリングの配置を実現するカスタムディレクティブ
 
-[DEMO](https://tktr90755.github.io/vue-image-tiling/)
+[DEMO BASIC](https://tktr90755.github.io/vue-image-tiling/bemo_basic)
+[DEMO ADVANCED](https://tktr90755.github.io/vue-image-tiling/bemo_advanced)
 
 ## Install
 ```
