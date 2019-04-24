@@ -1,6 +1,6 @@
 <template>
   <div id="demoAdvanced">
-    <ul v-image-tiling="{ width:800, height:600, scale:40, move:true }">
+    <ul v-image-tiling="{ width:800, height:600, scale:40, move:true, speed:0.5 }">
       <li><a href=""><img src="@/assets/img/00.jpg"></a></li>
       <li><a href=""><img src="@/assets/img/01.jpg"></a></li>
       <li><a href=""><img src="@/assets/img/02.jpg"></a></li>

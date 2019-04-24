@@ -8,14 +8,17 @@ ImageTiling.install = function (Vue) {
   Vue.directive('image-tiling', {
 
     inserted (el, binding, vnode) {
+      
+      
       let render0Id = 'render0_' + new Date().getTime().toString(16) + Math.floor(99999 * Math.random()).toString(16);
       let render1Id = 'render1_' + new Date().getTime().toString(16) + Math.floor(99999 * Math.random()).toString(16);
+      let render2Id = 'render2_' + new Date().getTime().toString(16) + Math.floor(99999 * Math.random()).toString(16);
       
       let tiles = undefined;
       let elms = [];
 
       if (typeof binding.value === 'object') {
-        const { width, height, scale, move } = binding.value;
+        const { width, height, scale, move, speed } = binding.value;
         tiles = (tiles === undefined)?new Tiles(width, scale):tiles;
 
         for(let i in vnode.children){
@@ -95,21 +98,24 @@ ImageTiling.install = function (Vue) {
             container1 = container0.cloneNode(true);
             el.appendChild(container1);
 
-            Ticker.killAll();
-            if(move)render2();
+            Ticker.kill(render1Id);
           }
         }
 
         let targetY = 0;
         function render2(){
-          targetY--;
+          let _speed = (speed)?speed:1;
+          targetY = targetY - _speed;
           container0.style.transform = "translateY(" + targetY + "px)";
-          container1.style.transform = "translateY(" + targetY + "px)";
+          if(container1)container1.style.transform = "translateY(" + targetY + "px)";
           if(targetY<=-(maxY)){
             targetY = 0;
           }
         }
+        Ticker.killAll();
         Ticker.add(render0, render0Id);
+        if(move)Ticker.add(render2, render2Id);
+        
       }
     },
 

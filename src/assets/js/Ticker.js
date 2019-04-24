@@ -41,7 +41,7 @@ class Ticker {
 		{
 			console.log("【Ticker Error】" + id + "というインスタンス名は" + this.items[id] + "において使用されています。");
     }
-    if(Object.keys(this.items).length >= 1){
+    if(Object.keys(this.items).length !== 0){
       this.renderId = window.requestAnimationFrame(() => {this._render()});
     }
   }
@@ -55,7 +55,7 @@ class Ticker {
     {
       throw "【Ticker Error】" + id + "というインスタンスはリストに登録されていません。";
     }
-    if(Object.keys(this.items).length <= 0){
+    if(Object.keys(this.items).length === 0){
       window.cancelAnimationFrame(this.renderId);
       this.renderId = undefined;
       this.items = {};
@@ -90,6 +90,7 @@ class Ticker {
 			this.items[i]();
     }
     if(Object.keys(this.items).length >= 1){
+      window.cancelAnimationFrame(this.renderId);
       this.renderId = window.requestAnimationFrame(() => {this._render()});
     }
 	}
