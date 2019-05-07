@@ -1,13 +1,14 @@
 <template>
-  <Top />
+  <DemoBasic />
 </template>
 
 <script>
 import Top from '@/components/Top.vue'
+import DemoBasic from '@/components/DemoBasic.vue'
 export default {
   name: 'app',
   components: {
-    Top
+    DemoBasic
   }
 }
 </script>

@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Top from '@/components/Top';
 import DemoBasic from '@/components/DemoBasic';
 import DemoAdvanced from '@/components/DemoAdvanced';
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/bemo_basic', component: DemoBasic },
-    { path: '/bemo_advanced', component: DemoAdvanced },
+    { path: '/vue-image-tiling/demo_basic', component: DemoBasic },
+    // { path: '/demo_advanced', component: DemoAdvanced },
 ];
 
 const router = new VueRouter({
