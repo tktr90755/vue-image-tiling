@@ -6,5 +6,8 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js'
       }
     }
+  },
+  devServer: {
+    public: b6d40d56.ngrok.io,
   }
 }
